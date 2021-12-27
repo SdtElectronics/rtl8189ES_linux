@@ -4518,6 +4518,7 @@ int rtw_dev_nlo_info_set(struct pno_nlo_info *nlo_info, pno_ssid_t* ssid,
 
 	if (source != NULL) {
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0))
+		MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);
 		len = kernel_read(fp, source, len, &pos);
 #else
 		len = vfs_read(fp, source, len, &pos);

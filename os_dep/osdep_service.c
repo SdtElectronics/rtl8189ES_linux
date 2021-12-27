@@ -1912,6 +1912,7 @@ static int readFile(struct file *fp,char *buf,int len)
 	while(sum<len) {
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0))
+		MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);
 		rlen = kernel_read(fp, buf+sum, len-sum, &fp->f_pos);
 #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 0))
 		rlen = __vfs_read(fp, buf+sum, len-sum, &fp->f_pos);
